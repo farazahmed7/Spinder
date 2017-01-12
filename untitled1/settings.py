@@ -25,7 +25,7 @@ SECRET_KEY = '_x(7^p$-h3w&8t6bu2664$y8uxl-169*&k+towt_0m^=gec-x!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spinder.pythonanywhere.com']
 
 
 # Application definition

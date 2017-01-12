@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse
 from .models import Location
 from django.contrib.auth.models import User
 from math import cos, asin, sqrt
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
 
 def distance(request):
@@ -23,6 +25,8 @@ def distance(request):
 
     return HttpResponse(a)
 
+@csrf_exempt
+@api_view(['GET', 'POST', ])
 def createUser(request):
     if request.method=="POST":
         _user=str(request.POST['user'])
