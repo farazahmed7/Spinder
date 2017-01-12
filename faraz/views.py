@@ -5,6 +5,7 @@ from .models import Location
 from django.contrib.auth.models import User
 from math import cos, asin, sqrt
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view
 
 
@@ -36,4 +37,17 @@ def createUser(request):
         return HttpResponse("Registered")
 
     return HttpResponse("Error")
+
+@csrf_exempt
+@api_view(['GET', 'POST', ])
+def loginUser(request):
+     if request.method=="POST":
+        _user=str(request.POST['user'])
+        _password=str(request.POST['password'])
+        user=authenticate(username=_user,password=_password)
+        if user is not None:
+            return HttpResponse(user.email)
+        else:
+            return HttpResponse("First signup please")
+
 
