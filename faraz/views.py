@@ -33,5 +33,7 @@ def createUser(request):
         _email=str(request.POST['email'])
         _password=str(request.POST['password'])
         User.objects.create_user(_user,_email,_password)
+        return HttpResponse("Registered")
 
+    return HttpResponse("Error")
 
