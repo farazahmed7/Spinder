@@ -8,6 +8,8 @@ urlpatterns=[
     url(r'^signUp$', views.createUser, name='createUser'),
     url(r'^signIn$', views.loginUser, name='loginUser'),
     url(r'^addLocation$', views.addLocation ,name='add'),
+     url(r'^showAll$', views.distance,name='all'),
+
 
 
 ]

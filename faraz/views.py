@@ -8,7 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view
 
-
+@csrf_exempt
+@api_view(['GET', 'POST', ])
 def distance(request):
     if request.method=="POST":
         p = 0.017453292519943295
