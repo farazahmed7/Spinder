@@ -57,7 +57,7 @@ def addLocation(request):
         lat1=str(request.POST['latitude'])
         lon1=str(request.POST['longitude'])
         user=User.objects.get(email=_email)
-        Location.objects.create(user=user,longitude=lon1,latitude=lat1)
+        Location.objects.update_or_create(user=user,longitude=lon1,latitude=lat1)
         return HttpResponse("Added")
     return HttpResponse("faraz")
 
