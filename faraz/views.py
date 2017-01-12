@@ -10,11 +10,11 @@ from rest_framework.decorators import api_view
 
 
 def distance(request):
-    if request.method=="GET":
+    if request.method=="POST":
         p = 0.017453292519943295
-        lat1=38.897147
+        lat1=str(request.POST['latitude'])
        # lat2=38.897147
-        lon1=-77.043934
+        lon1=str(request.POST['longitude'])
        # lon2=-77.043934
         list=[]
         for x in Location.objects.all():
@@ -49,5 +49,14 @@ def loginUser(request):
             return HttpResponse(user.email)
         else:
             return HttpResponse("First signup please")
+
+@api_view(['GET', 'POST', ])
+def addLocation(request):
+    if request.method=="POST":
+        _email=str(request.POST['email'])
+        lat1=str(request.POST['latitude'])
+        lon1=str(request.POST['longitude'])
+        user=User.objects.get(email=_email)
+        Location.objects.create(user=user,longitude=lon1,latitude=lat1)
 
 

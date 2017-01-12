@@ -7,6 +7,7 @@ urlpatterns=[
     url(r'^location$', views.distance, name='distance'),
     url(r'^signUp$', views.createUser, name='createUser'),
     url(r'^signIn$', views.loginUser, name='loginUser'),
+    url(r'^addLocation$', views.addLocation ,name='add'),
 
 
 ]
