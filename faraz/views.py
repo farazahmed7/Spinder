@@ -13,9 +13,9 @@ from rest_framework.decorators import api_view
 def distance(request):
     if request.method=="POST":
         p = 0.017453292519943295
-        lat1=str(request.POST['latitude'])
+        lat1=float(request.POST['latitude'])
        # lat2=38.897147
-        lon1=str(request.POST['longitude'])
+        lon1=float(request.POST['longitude'])
        # lon2=-77.043934
         list=[]
         for x in Location.objects.all():
