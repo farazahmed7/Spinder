@@ -22,7 +22,7 @@ def distance(request):
         for x in Location.objects.all():
             a = 0.5 - cos((float(x.latitude) - lat1) * p)/2 + cos(lat1 * p) * cos(float(x.latitude) * p) * (1 - cos((float(x.longitude) - lon1) * p)) / 2
             result=round(12742 * asin(sqrt(a)),2)
-            list.append(x.user.get_username() +" " +str(result)+"\n")
+            list.append(x.user.get_username() +" " +str(result)+ " Km""\n")
 
         return HttpResponse(list)
 
