@@ -7,6 +7,7 @@ from math import cos, asin, sqrt
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view
+from django.db import IntegrityError
 
 @csrf_exempt
 @api_view(['GET', 'POST', ])
@@ -59,7 +60,12 @@ def addLocation(request):
         lon1=str(request.POST['longitude'])
         user=User.objects.get(email=_email)
 
-        Location.objects.update_or_create(user=user,longitude=lon1,latitude=lat1)
+        try:
+            Location.objects.create(user=user,longitude=lon1,latitude=lat1)
+        except IntegrityError as a:
+            Location.objects.update(longitude=lon1,latitude=lat1)
+            return HttpResponse("Added")
+
         return HttpResponse("Added")
     return HttpResponse("faraz")
 

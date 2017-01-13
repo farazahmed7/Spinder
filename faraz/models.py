@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 class Location(models.Model):
-    user=models.OneToOneField(User,unique=True)
+    user=models.OneToOneField(User,blank=True,null=True)
     longitude = models.CharField(max_length=50)
     latitude = models.CharField(max_length=30)
 
