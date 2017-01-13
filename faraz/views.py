@@ -63,7 +63,7 @@ def addLocation(request):
         try:
             Location.objects.create(user=user,longitude=lon1,latitude=lat1)
         except IntegrityError as a:
-            Location.objects.update(longitude=lon1,latitude=lat1)
+            Location.objects.filter(user=user).update(longitude=lon1,latitude=lat1)
             return HttpResponse("Added")
 
         return HttpResponse("Added")
