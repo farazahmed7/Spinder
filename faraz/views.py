@@ -50,7 +50,7 @@ def loginUser(request):
         if user is not None:
             return HttpResponse(user.email)
         else:
-            return HttpResponse("First signup please")
+            return HttpResponse("N")
 
 @api_view(['GET', 'POST', ])
 def addLocation(request):
