@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
+
 
 @csrf_exempt
 @api_view(['GET', 'POST', ])
@@ -52,6 +54,8 @@ def loginUser(request):
         else:
             return HttpResponse("N")
 
+
+@login_required
 @api_view(['GET', 'POST', ])
 def addLocation(request):
     if request.method=="POST":
