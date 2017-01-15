@@ -55,7 +55,7 @@ def loginUser(request):
             return HttpResponse("N")
 
 
-@login_required
+
 @api_view(['GET', 'POST', ])
 def addLocation(request):
     if request.method=="POST":
