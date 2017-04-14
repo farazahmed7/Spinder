@@ -38,7 +38,7 @@ def nearbyUsers(request):
         lat1=float(request.POST['latitude'])
        # lat2=38.897147
         lon1=float(request.POST['longitude'])
-        range=int(request.POST['longitude'])
+        range=int(request.POST['range'])
         list=[]
         for x in Location.objects.all():
             a = 0.5 - cos((float(x.latitude) - lat1) * p)/2 + cos(lat1 * p) * cos(float(x.latitude) * p) * (1 - cos((float(x.longitude) - lon1) * p)) / 2
