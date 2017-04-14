@@ -28,7 +28,29 @@ def distance(request):
 
         return HttpResponse(list)
 
-    return HttpResponse(a)
+    return HttpResponse("a")
+
+@csrf_exempt
+@api_view(['GET', 'POST', ])
+def nearbyUsers(request):
+    if request.method=="POST":
+        p = 0.017453292519943295
+        lat1=float(request.POST['latitude'])
+       # lat2=38.897147
+        lon1=float(request.POST['longitude'])
+        range=int(request.POST['longitude'])
+        list=[]
+        for x in Location.objects.all():
+            a = 0.5 - cos((float(x.latitude) - lat1) * p)/2 + cos(lat1 * p) * cos(float(x.latitude) * p) * (1 - cos((float(x.longitude) - lon1) * p)) / 2
+            result=round(12742 * asin(sqrt(a)),2)
+
+            if result<=range:
+                list.append(x.user.get_username() +" " +str(result)+ " Km""\n")
+
+
+        return HttpResponse(list)
+
+
 
 @csrf_exempt
 @api_view(['GET', 'POST', ])

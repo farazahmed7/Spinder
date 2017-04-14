@@ -9,7 +9,7 @@ urlpatterns=[
     url(r'^signIn$', views.loginUser, name='loginUser'),
     url(r'^addLocation$', views.addLocation ,name='add'),
      url(r'^showAll$', views.distance,name='all'),
-
+	url(r'^nearbyUsers$', views.nearbyUsers,name='nearby'),
 
 
 ]
